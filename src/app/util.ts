@@ -4,7 +4,7 @@ import { InFrameComponent } from "./in-frame.component";
 
 export function decideRootComponent(window: Window, environment: Environment) {
   const isInIFrame = inIFrame(window);
-  return environment.type === EnvironmentType.Development || !isInIFrame
+  return environment.type === EnvironmentType.Development || isInIFrame
     ? AppComponent
     : InFrameComponent;
 }
