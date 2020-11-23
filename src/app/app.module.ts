@@ -1,6 +1,5 @@
 import { ApplicationRef, NgModule, Inject } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { InFrameComponent } from "./in-frame.component";
@@ -9,13 +8,13 @@ import { decideRootComponent } from "./util";
 
 @NgModule({
   declarations: [AppComponent, InFrameComponent],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule],
   providers: [
     {
       provide: ENVIRONMENT_TOKEN,
-      useValue: environment
-    }
-  ]
+      useValue: environment,
+    },
+  ],
 })
 export class AppModule {
   constructor(@Inject(ENVIRONMENT_TOKEN) private env: Environment) {}
