@@ -1,4 +1,4 @@
-# Dynamic Application Bootstrapping in Angular+
+# Dynamic Application Bootstrapping in Angular
 
 [Demo on StackBlitz ⚡️](https://stackblitz.com/edit/dynamic-application-bootstrapping)
 
