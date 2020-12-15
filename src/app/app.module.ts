@@ -1,4 +1,4 @@
-import { ApplicationRef, NgModule, Inject } from "@angular/core";
+import { ApplicationRef, NgModule, Inject, DoBootstrap } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
@@ -25,7 +25,7 @@ import { decideRootComponent } from "./util";
     }
   ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   constructor(
     @Inject(EnvironmentInjectable) private env: Environment,
     @Inject(WindowInjectable) private window: Window
