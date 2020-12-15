@@ -1,6 +1,9 @@
 import { InjectionToken } from "@angular/core";
 
-export const ENVIRONMENT_TOKEN = new InjectionToken("ENVIRONMENT_TOKEN");
+const windowToken = "WINDOW_INJECTABLE_TOKEN";
+const envToken = "ENVIRONMENT_INJECTABLE_TOKEN";
+export const WindowInjectable = new InjectionToken(windowToken);
+export const EnvironmentInjectable = new InjectionToken(envToken);
 
 export enum EnvironmentType {
   Production = "production",

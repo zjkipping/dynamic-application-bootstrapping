@@ -3,7 +3,12 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 import { InFrameComponent } from "./in-frame.component";
-import { Environment, environment, ENVIRONMENT_TOKEN } from "./environment";
+import {
+  Environment,
+  environment,
+  EnvironmentInjectable,
+  WindowInjectable
+} from "./environment";
 import { decideRootComponent } from "./util";
 
 @NgModule({
@@ -11,16 +16,23 @@ import { decideRootComponent } from "./util";
   imports: [BrowserModule],
   providers: [
     {
-      provide: ENVIRONMENT_TOKEN,
-      useValue: environment,
+      provide: EnvironmentInjectable,
+      useValue: environment
     },
-  ],
+    {
+      provide: WindowInjectable,
+      useValue: window
+    }
+  ]
 })
 export class AppModule {
-  constructor(@Inject(ENVIRONMENT_TOKEN) private env: Environment) {}
+  constructor(
+    @Inject(EnvironmentInjectable) private env: Environment,
+    @Inject(WindowInjectable) private window: Window
+  ) {}
 
   ngDoBootstrap(appRef: ApplicationRef) {
-    const rootComponent = decideRootComponent(window, this.env);
+    const rootComponent = decideRootComponent(this.window, this.env);
     appRef.bootstrap(rootComponent);
   }
 }
